@@ -1,1 +1,261 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zijing Di</title>
+  <meta name="description" content="Personal academic homepage." />
+  <link rel="icon" href="data:," />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --link: #0ea5e9;
+      --link-visited: #0284c7;
+      --border: #e2e8f0;
+      --card: #f8fafc;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1020;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --link: #38bdf8;
+        --link-visited: #7dd3fc;
+        --border: #1f2a44;
+        --card: #0f172a;
+      }
+    }
+    body {
+      margin: 0;
+      font: 16px/1.65 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:visited { color: var(--link-visited); }
+
+    .wrap { max-width: 820px; margin: 0 auto; padding: 24px; }
+    header { position: sticky; top: 0; backdrop-filter: blur(6px); background: color-mix(in srgb, var(--bg) 86%, transparent); border-bottom: 1px solid var(--border); z-index: 10; }
+    .nav { display: flex; align-items: center; gap: 16px; justify-content: space-between; max-width: 940px; margin: 0 auto; padding: 12px 24px; }
+    .nav .links a { margin-right: 16px; font-weight: 600; color: var(--muted); }
+
+    .hero { margin-top: 28px; }
+
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 24px;           /* space between photo and text */
+      flex-wrap: wrap;     /* allows wrapping on small screens */
+      margin-top: 24px;
+    }
+    .avatar { 
+      display: block; 
+      width: 160px; 
+      border-radius: 50%; 
+      margin-bottom: 12px;
+    }
+    .about-text {
+      flex: 1;              /* text takes remaining space */
+      min-width: 240px;
+    }
+
+    h1 { font-size: clamp(26px, 3vw, 34px); margin: 0; line-height: 1.2; }
+
+    section { padding: 18px 0 8px; }
+    section + section { border-top: 1px solid var(--border); }
+    h2 { font-size: 20px; margin: 6px 0 2px; }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin: 10px 0; }
+    .pub .meta strong { color: var(--text); font-weight: 800; }
+    ul { padding-left: 18px; }
+    .abstract-toggle {
+    display: inline;
+    color: var(--link);
+    cursor: pointer;
+    font-size: 0.9em;
+    }
+    .abstract-content {
+    display: none;
+    margin-top: 6px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.95em;
+    }
+    .pub { margin: 12px 0; }
+    .pub .meta { color: var(--muted); font-size: 0.94em; }
+    .tag { display: inline-block; border: 1px solid var(--border); padding: 2px 8px; border-radius: 999px; font-size: 12px; color: var(--muted); margin-left: 6px; }
+
+    footer { color: var(--muted); font-size: 0.95em; border-top: 1px solid var(--border); margin-top: 24px; padding: 16px 0 40px; }
+    </style>
+    <script>
+      function revealEmail() {
+        const a = document.getElementById('email');
+        a.textContent = a.dataset.user + '@' + a.dataset.host;
+        a.href = 'mailto:' + a.textContent;
+      }
+    function toggleAbstract(id) {
+    const abs = document.getElementById(id);
+    abs.style.display = abs.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\\\(', '\\\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <div class="links" aria-label="Section navigation">
+          <a href="#about">About</a>
+          <a href="#publications">Publications</a>
+          <a href="#teaching">Teaching</a>
+        </div>
+      </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <div class="about-container" id="about">
+      <!-- Photo placeholder -->
+      <img src="profile.jpg" alt="Portrait" class="avatar" />
+      <div class="about-text">
+        <h1>Zijing Di <span lang="zh" style="font-family: KaiTi, STKaiti, 'Noto Serif SC', serif;">(狄子晶)</span></h1>
+        <p><em>Pronunciation close to “Zee-jing Dee.”</em></p>
+        <p>
+          I am a third-year Ph.D. student at the <a href="https://theory.epfl.ch/">EPFL theory group</a> advised by <a href="https://ic-people.epfl.ch/~achiesa/">Alessandro Chiesa</a>. I received my M.S. in Computer Science from Stanford University in 2023 and B.S. in Computer Science from UC San Diego in 2021, where I was very fortunate to work with <a href="https://cseweb.ucsd.edu/~mihir/">Mihir Bellare</a>, <a href="https://cseweb.ucsd.edu/~h3davis/">Hannah Davis</a>, <a href="https://c.rypto.systems/">Wilson Nguyen</a>, <a href="https://www.scs.stanford.edu/~geoff/">Geoff Ramseyer</a>, and <a href="https://homes.cs.washington.edu/~tyagi/">Nirvan Tyagi</a>.
+        </p>
+        <p>
+          I am broadly interested in theoretical computer science, particularly in (post-)quantum cryptography and proof systems. 
+        </p>
+        <p>
+          Email:
+          <a id="email" data-user="zijing.di" data-host="epfl.ch" href="#" onclick="revealEmail(); this.onclick=null; return false;">click to reveal</a> · <a href="https://scholar.google.com/citations?user=mhFJ4dIAAAAJ&hl=en" aria-label="Google Scholar">Scholar</a>
+        </p>
+      </div>
+    </div>
+
+    <section id="publications" aria-labelledby="pubs-heading">
+      <h2 id="pubs-heading">Publications</h2>
+      <ol reversed>
+        <li class="pub">
+          <div><strong>Cryptography from Sampling Oracles: Dequantizing the CRQS Model</strong> 
+          <!-- <div class="meta">TCC 2025.</div> -->
+          <div class="meta"><strong>Zijing Di</strong>, Fuyuki Kitagawa, <a href="https://www.nishimaki.info/">Ryo Nishimaki</a>, <a href="https://spooner.cc/">Nicholas Spooner</a>, <a href="https://sites.google.com/view/takashiyamakawa">Takashi Yamakawa</a>.</div>
+          <div class="meta"> [<span class="abstract-toggle">Abstract</span>]</div>
+          <div class="abstract-content">
+            <p>In the <em>common reference quantum state</em> (CRQS) model, introduced by Morimae, Nehoran and Yamakawa (CRYPTO '24), all parties have access to an oracle providing copies of a pure quantum state $\ket{\psi_k}$ derived efficiently from a classical secret $k$. Morimae et al. show that statistically secure quantum bit commitments exist unconditionally in the bounded CRQS model, in which the adversary can obtain only an <em>a priori bounded</em> number of copies of the state $\ket{\psi_k}$.
+            </p>
+            <p>In this work, we introduce a classical variant of the CRQS model called the <em>common reference distribution</em> (CRD) model. In the CRD model, all parties have access to a sampling oracle that yields independent samples from an efficiently samplable distribution $D_k$. We show that statistically secure (classical) noninteractive bit commitments exist unconditionally in the bounded CRD (bCRD) model, where the adversary can obtain only a bounded number of samples from $D_k$. Additionally, we show how to build statistically secure signature schemes, NIZKs, and key agreement in this model. We complement these results by showing that without the sample bound, cryptography in this model implies one way functions.</p>
+            <p>We then show how to transform a scheme in the bCRD model into a scheme in the bCRQS model. We thus obtain statistically-secure commitment schemes, signature schemes, and NIZKs with classical communication in the bCRQS model. In particular, we improve on the bCRQS commitment scheme of Morimae et al., which requires quantum communication.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <div><strong>How to Prove Post-Quantum Security for Succinct Non-Interactive Reductions</strong> 
+          <!-- <div class="meta">TCC 2025.</div> -->
+          <div class="meta"><a href="https://ic-people.epfl.ch/~achiesa/">Alessandro Chiesa</a>,<strong>Zijing Di</strong>, <a href="https://zihanhu.cn/">Zihan Hu</a>, Yuxi Zheng.</div>
+          <div class="meta"> [<span class="abstract-toggle">Abstract</span>]</div>
+          <div class="abstract-content">
+            <p>Hash-based succinct non-interactive arguments (SNARGs) are widely used in practice, owing to their ease of deployment, notable efficiency, and post-quantum properties. They are constructed via the BCS transformation, which combines an interactive oracle proof (IOP) and a hash-based vector commitment. This success has motivated the study of hash-based succinct non-interactive reductions (SNRDXs), used for recursively ensuring the correctness of distributed computations, by extending the BCS transformation to work with an interactive oracle reduction (IOR) rather than an IOP.
+            </p>
+            <p>We prove that hash-based SNRDXs constructed from IORs are secure in the quantum random oracle model (QROM), provided the IOR satisfies a natural post-quantum analogue of state-restoration security; moreover, we show that (classical) round-by-round security implies post-quantum state-restoration security. Our results thus achieve a post-quantum analogue of the classical security of SNRDXs in the ROM, and generalize a prior result about SNARGs in the QROM to cover recent SNRDXs constructions.
+            </p>
+            <p>Moreover, for SNRDXs we propose and achieve an adaptively-secure straightline quantum extraction property in the QROM, while prior work obtains non-adaptive security for SNARGs in the QROM. Along the way, we develop a modular framework for proving the security of the (extended) BCS transformation based on a new quantum extraction property for vector commitments (which we prove is achieved by Merkle commitments), mirroring classical security analyses and departing from prior "monolithic" post-quantum analyses. This demands a new commutator bound that shows the almost-commutativity between quantum extraction and quantum oracle queries, by bounding a natural classical extraction property.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <div><strong>Quantum Rewinding for IOP-Based Succinct Arguments</strong> 
+          <div class="meta">TCC 2025.</div>
+          <div class="meta"><a href="https://ic-people.epfl.ch/~achiesa/">Alessandro Chiesa</a>, <a href="https://marceldallagnol.github.io/">Marcel Dall'Agnol</a>, <strong>Zijing Di</strong>, <a href="https://ziyiguan.github.io/">Ziyi Guan</a>, <a href="https://spooner.cc/">Nicholas Spooner</a>.</div>
+          <div class="meta">[<a href="https://eprint.iacr.org/2025/947">ePrint</a>] [<span class="abstract-toggle">Abstract</span>]</div>
+          <div class="abstract-content">
+            <p>We analyze the post-quantum security of succinct interactive arguments constructed from interactive oracle proofs (IOPs) and vector commitment schemes. Specifically, we prove that an interactive variant of the <em>BCS transformation</em> is secure in the standard model against quantum adversaries when the vector commitment scheme is collapse binding.
+            </p>
+
+            <p>Prior work established the post-quantum security of Kilian's succinct interactive argument, a special case of the BCS transformation for one-message IOPs (i.e., PCPs). That analysis is inherently limited to one message because the reduction, like all prior quantum rewinding reductions, aims to extract classical information (a PCP string) from the quantum argument adversary. Our reduction overcomes this limitation by instead extracting a <em>quantum algorithm</em> that implements an IOP adversary; representing such an adversary classically may in general require exponential complexity.</p>
+
+            <p>Along the way we define <em>collapse position binding</em>, which we propose as the "correct" definition of collapse binding for vector commitment schemes, eliminating shortcomings of prior definitions.</p>
+
+            <p>As an application of our results, we obtain post-quantum secure succinct arguments, in the standard model (no oracles), with the <em>best asymptotic complexity known</em>.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <div><strong>MuxProofs: Succinct Arguments for Machine Computation from Vector Lookups</strong> 
+          <div class="meta">ASIACRYPT 2024.</div>
+          <div class="meta"><strong>Zijing Di</strong>, Lucas Xia, <a href="https://c.rypto.systems/">Wilson Nguyen</a>, <a href="https://homes.cs.washington.edu/~tyagi/">Nirvan Tyagi</a>.</div>
+          <div class="meta">[<a href="https://eprint.iacr.org/2023/974">ePrint</a>][<span class="abstract-toggle">Abstract</span>]</div>
+          <div class="abstract-content">
+            <p>Proofs for machine computation prove the correct execution of arbitrary programs that operate over fixed instruction sets (e.g., RISC-V, EVM, Wasm). A standard approach for proving machine computation is to prove a universal set of constraints that encode the full instruction set at each step of the program execution. This approach incurs a proving cost per execution step on the order of the total sum of instruction constraints for all of the instructions in the set, despite each step of the program only executing a single instruction. Existing proving approaches that avoid this universal cost per step (and incur only the cost of a single instruction's constraints per step) either fail to provide zero-knowledge or rely on recursive proof composition for which security relies on the heuristic instantiation of the random oracle.
+            </p>
+
+            <p>We present new protocols for proving machine execution that resolve these limitations, enabling prover efficiency on the order of only the executed instructions while achieving zero-knowledge and avoiding recursive proofs. Our core technical contribution is a new primitive that we call a succinct vector lookup argument which enables a prover to build up a machine execution "on-the-fly". We propose succinct vector lookups for both univariate polynomial and multivariate polynomial commitments in which vectors are encoded on cosets of a multiplicative subgroup and on subcubes of the boolean hypercube, respectively. We instantiate our proofs for machine computation by integrating our vector lookups with existing efficient, succinct non-interactive proof systems for NP.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <div><strong>Hardening Signature Schemes via Derive-then-Derandomize: Stronger Security Proofs for EdDSA</strong> 
+          <div class="meta">PKC 2023.</div>
+          <div class="meta"><a href="https://cseweb.ucsd.edu/~mihir/">Mihir Bellare</a>, <a href="https://cseweb.ucsd.edu/~h3davis/">Hannah Davis</a>, <strong>Zijing Di</strong>.</div>
+          <div class="meta">[<a href="https://eprint.iacr.org/2023/298">ePrint</a>][<span class="abstract-toggle">Abstract</span>]</div>
+          <div class="abstract-content">
+            <p>We consider a transform, called Derive-then-Derandomize, that hardens a given signature scheme against randomness failure and implementation error. We prove that it works. We then give a general lemma showing indifferentiability of Shrink-MD, a class of constructions that apply a shrinking output transform to an MD-style hash function. Armed with these tools, we give new proofs for the widely standardized and used EdDSA signature scheme, improving prior work in two ways: (1) we give proofs for the case that the hash function is an MD-style one, reflecting the use of SHA512 in the NIST standard, and (2) we improve the tightness of the reduction so that one has guarantees for group sizes in actual use.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="teaching">
+    <h2>Teaching</h2>
+    <ul>
+    <li>Spring 2025 · EPFL · TA · Theory of Computation</li>
+    <li>Spring 2024 · EPFL · TA · Introduction to Quantum Computation</li>
+    <li>Fall 2021, Fall 2022 · Stanford University · TA · Introduction to Automata and Complexity</li>
+    <li>Fall 2020 · UCSD · Tutor · Introduction to Modern Cryptography</li>
+    <li>Spring 2020 · UCSD · Tutor · Design and Analysis of Algorithm</li>
+    </ul>
+    </section>
+
+    <section id="misc">
+      <h2>Miscellaneous</h2>
+      <ul>
+        <li>Occasional notes on <a href="blog.html">my blog</a>.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <div>&copy; <span id="year"></span> Zijing Di</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Find all publications
+      const pubs = document.querySelectorAll('.pub');
+      pubs.forEach((pub, i) => {
+        const abs = pub.querySelector('.abstract-content');
+        const toggle = pub.querySelector('.abstract-toggle');
+        if (abs && toggle) {
+          const id = `abs${i + 1}`;
+          abs.id = id;
+          toggle.addEventListener('click', () => {
+            abs.style.display = abs.style.display === 'block' ? 'none' : 'block';
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

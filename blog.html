@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zijing Di — Blog</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 24px;
+      color: #0f172a;
+      background: #ffffff;
+    }
+    a { color: #0ea5e9; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { margin-bottom: 20px; }
+    article { margin-bottom: 40px; border-bottom: 1px solid #e2e8f0; padding-bottom: 20px; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 22px; margin-bottom: 6px; }
+    time { color: #475569; font-size: 0.9em; }
+    footer { color: #475569; font-size: 0.9em; margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 16px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">← Back to home</a>
+  </header>
+
+  <main>
+    <h1>Blog</h1>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Zijing Di </p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
